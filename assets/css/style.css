@@ -1,0 +1,40 @@
+p a {
+  text-decoration: none;
+}
+
+ul li {
+  text-decoration: none;
+  list-style: none;
+}
+.size {
+  width: 500px;
+}
+
+.txt {
+  text-align: center;
+}
+
+.display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#outer-wrap {
+  width: 800px;
+  height: 685px;
+  overflow: hidden;
+}
+#outer-wrap2 {
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
+}
+
+#meets {
+  position: absolute;
+  right: 0;
+  font-weight: bolder;
+  font-size: 1 rem;
+}
