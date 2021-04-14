@@ -216,7 +216,7 @@
                 Already have an account?
 
                  
-                 <a href="login.php" class="btn btn-primary mb-3">Log In</a> 
+                 <a href="index.php" class="btn btn-primary mb-3">Log In</a>
                
 
             </p>
