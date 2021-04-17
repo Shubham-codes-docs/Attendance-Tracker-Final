@@ -13,8 +13,14 @@ $userid = $_SESSION['userid'];
      if($_POST['func2call']==='fetchAtten')
     {
         User::fetchAtten();
-        User::fetchUserMeet();
+        User::fetchUserMeet($userid);
     }
+
+    if($_POST['func2call']==='fetchMeets')
+    {
+        User::fetchAtten();
+    }
+
 
     if($_POST['func2call']==='markattend')
     {
@@ -38,4 +44,20 @@ $userid = $_SESSION['userid'];
     if($_POST['func2call']==='getTotal')
     {
       $total =  $user->getTotal($conn,$userid);
+    }
+
+    if($_POST['func2call']==='deleteMeets')
+    {
+        if(isset($_POST['id']))
+        {
+            $meet = AdminManage::getById($conn,$_POST['id']);
+           
+            $meet->deleteMeet($conn,$meet->id);
+        }
+    }
+    if($_POST['func2call']==='addMeet')
+    {
+        $meet = new AdminManage();
+        $res = $meet->addMeets($conn,$_POST['name'],$_POST['stime'],$_POST['etime']);
+        $meet->addInUser($conn,$res,$_POST['name'],$_POST['stime'],$_POST['etime']);
     }

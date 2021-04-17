@@ -2,7 +2,11 @@
 require "functions/load.php";
 $conn = require "./functions/db.php";
 session_start();
-$_SESSION['userid']=$_GET['id'];
+Auth::requireLogIn();
+if($_GET['id']!==$_SESSION['userid'])
+{
+  die("Unauthorized");
+}
 if(isset($_GET['id']))
 {
    $totalmeets = User::totalMeets($conn);
@@ -47,7 +51,7 @@ else{
         </div>
         <div>
           <h3>Attendance</h3>
-          <p id='attendance'><?=$user->totalAtten ?>/<?=$totalmeets?></p>
+         <p> <p  style = "display:inline"id='attendance'><?=$user->totalAtten ?></p>/<?=$totalmeets?></p>
         </div>
       <nav style="width:100%;">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -206,7 +210,7 @@ else{
                     let splitted = response.split(','); 
                     let count = JSON.parse(splitted); 
                    const att = document.getElementById('attendance');
-                   att.innerHTML=`<p>${count}/20</p>`;
+                   att.innerHTML=`<p>${count}</p>`;
                     
                     
                   },

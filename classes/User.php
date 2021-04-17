@@ -19,13 +19,17 @@ public static function fetchAtten()
   echo json_encode($meets);
 }
 
-public static function fetchUserMeet(){
+public static function fetchUserMeet($id){
   require "../functions/load.php";
   $conn = require "../functions/db.php";
-  $sql= "SELECT * FROM usermeet";
-  $results =$conn->query($sql);
-  $meets =$results->fetchAll(PDO::FETCH_ASSOC);
+  $sql= "SELECT * FROM usermeet where userid=:id ";
+  $stmt =$conn->prepare($sql);
+  $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+  if($stmt->execute())
+  {
+  $meets =$stmt->fetchAll(PDO::FETCH_ASSOC);
   echo "|".json_encode($meets);
+  }
 }
 
 static function getById($conn,$id)
