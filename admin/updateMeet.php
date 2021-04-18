@@ -3,26 +3,48 @@ require '../functions/load.php';
 $conn = require "../functions/db.php";
 require '../header.php';
 $meet = AdminManage::getById($conn,$_GET['id']);
+$errors=[];
+
 if(isset($_GET['id']))
 {
     
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-        
+    if($meet->meetName!=='')
+    {
+        $errors[]="Please Enter A Valid Name";
+    }
+    
+    if($meet->startTime==='')
+    {
+        $errors[]="Please Enter A Start Time";
+    }
+    
+    if($meet->endTime==='')
+    {
+        $errors[]="Please Enter A End Time";
+    }
+    
+    if(count($errors)===0)
+    {
     $meet->meetName=$_POST['meetname'];
     $meet->startTime=$_POST['starttime'];
     $meet->endTime=$_POST['endingtime'];
     if($meet->editMeet($conn,$_GET['id']))
     {
       Url::redirect("/admin/admin.php");
-}    
-else
-echo "No";
+    }    
+     }
 }
 }
 
 ?>
-<form method="post">
+        <ul>
+        <?php foreach($errors as $error):?>
+          <li><?= $error?></li>
+          <?php endforeach;?>
+          </ul>
+   <form method="post">
     
     <div class="mb-3">
     <label for="meetname" class="form-label">Meet Name</label>
