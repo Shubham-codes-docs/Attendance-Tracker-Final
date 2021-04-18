@@ -38,7 +38,7 @@ function add()
                     stime:stime,
                     etime:etime
                   },
-                  url: "../classes/Fetchatten.php",
+                  url: "../classes/Fetchadmin.php",
                   success: function(response)
                   { 
                     console.log("Meet Added");

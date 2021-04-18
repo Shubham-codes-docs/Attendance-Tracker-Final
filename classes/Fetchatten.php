@@ -1,6 +1,6 @@
 <?php
 session_start();
-//$userid = $_SESSION['userid'];
+    $userid = $_SESSION['userid'];
      require "../functions/load.php";
      $conn = require "../functions/db.php";
      if(isset($userid))

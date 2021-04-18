@@ -46,7 +46,7 @@ AdAuth::requireLogIn();
             $.ajax({
                     type: "POST", 
                     data: {func2call:"fetchMeets"},
-                    url: "../classes/Fetchatten.php",
+                    url: "../classes/Fetchadmin.php",
                     success: function(response)
                     {  
                         arr = JSON.parse(response);
@@ -114,7 +114,7 @@ AdAuth::requireLogIn();
                       func2call:"deleteMeets",
                       id:id,
                   },
-                  url: "../classes/Fetchatten.php",
+                  url: "../classes/Fetchadmin.php",
                   success: function(response){
                     console.log("Meet Deleted");
                   },
