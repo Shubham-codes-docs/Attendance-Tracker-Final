@@ -2,7 +2,10 @@
 require '../functions/load.php';
 $conn = require "../functions/db.php";
 require '../header.php';
+session_start();
+AdAuth::requireLogIn();
 $meet = AdminManage::getById($conn,$_GET['id']);
+
 $errors=[];
 
 if(isset($_GET['id']))

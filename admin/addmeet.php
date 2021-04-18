@@ -1,6 +1,8 @@
 <?php require '../functions/load.php';
 $conn = require "../functions/db.php";
 require '../header.php';
+session_start();
+AdAuth::requireLogIn();
 ?>
 
 

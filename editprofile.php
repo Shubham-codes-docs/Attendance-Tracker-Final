@@ -2,6 +2,12 @@
 
 require "functions/load.php";
 $conn = require "./functions/db.php";
+session_start();
+Auth::requireLogIn();
+if($_GET['id']!==$_SESSION['userid'])
+{
+  die("Unauthorized");
+}
 
 $user = User::getById($conn,$_GET['id']);
 $errors=[];
