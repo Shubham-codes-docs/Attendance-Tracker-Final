@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 require "functions/load.php";
@@ -40,62 +39,9 @@ session_start();
 <div >
 <button class="btn  btn-primary mt-1 " >Log In</button>
 </div>
-
+<p>New Here<a href="signup.php">Signup</a></p>
+<a href="./admin/login1.php">Admin</a>
 </form>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
-=======
-<?php 
-session_start(); 
-include "connect_signup.php";
-
-if (isset($_POST['email']) && isset($_POST['password'])) {
-
-	function validate($data){
-       $data = trim($data);
-	   $data = stripslashes($data);
-	   $data = htmlspecialchars($data);
-	   return $data;
-	}
-
-	$email = validate($_POST['email']);
-	$password = validate($_POST['password']);
-
-	if (empty($email)) {
-		header("Location: index.php?error=User Name is required");
-	    exit();
-	}else if(empty($password)){
-        header("Location: index.php?error=Password is required");
-	    exit();
-	}else{
-		// hashing the password
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        
-		$sql = "SELECT * FROM users WHERE user_name='$email' AND password='$password'";
-
-		$result = mysqli_query($con, $sql);
-
-		if (mysqli_num_rows($result) === 1) {
-			$row = mysqli_fetch_assoc($result);
-            if ($row['email'] === $email && $row['password'] === $password) {
-            	$_SESSION['user_name'] = $row['user_name'];
-            	$_SESSION['name'] = $row['name'];
-            	$_SESSION['id'] = $row['id'];
-            	header("Location: dummyhome.php");   //shubham's homepage
-		        exit();
-            }else{
-				header("Location: index.php?error=Incorrect User name or password");
-		        exit();
-			}
-		}else{
-			header("Location: index.php?error=Incorrect User name or password");
-	        exit();
-		}
-	}
-	
-}else{
-	header("Location: index.php");
-	exit();
-}
->>>>>>> b175525ba9ee624accca3ad877b407c077aa05fc

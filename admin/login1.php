@@ -5,23 +5,22 @@ require "../functions/load.php";
 $conn= require "../functions/db.php";
 session_start();
  $errors=[];
-  // ------------------------------------------------ login authenticate check -------------------------------------------------// 
   if(isset($_POST['login'])){
     if($_POST['username']!="" && $_POST['password']!=""){
-      CheckUser::adminCheck($conn,$_POST['username'],$_POST['password']);
-      if(1)
+     $id = CheckUser::adminCheck($conn,$_POST['username'],$_POST['password']);
+      if($id)
       {
-          Auth::logIn();
+          AdAuth::logIn();
+          $_SESSION['adminid']=$id;
           Url::redirect("/admin/admin.php");
       }
       else
       {
-          $_SESSION['is_logged_in']=false;
+          $_SESSION['is_adminlogged_in']=false;
           $errors[]="Invalid Credentials";
       }
     }
   }
- // ------------------------------------------------ login authenticate check end ----------------------------------------------// 
 ?>
 <?php require '../header.php';?>
 <h2>Log In</h2>

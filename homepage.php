@@ -22,6 +22,8 @@ else{
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Attendance Tracker</a>
+        <a class='nav nav-element'  href="editprofile.php?id=<?= $_GET['id']?>">Edit</a>
+        <a href="logout.php">Log Out</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -210,7 +212,7 @@ else{
                     let splitted = response.split(','); 
                     let count = JSON.parse(splitted); 
                    const att = document.getElementById('attendance');
-                   att.innerHTML=`<p>${count}</p>`;
+                   att.innerHTML=`<p  style = "display:inline">${count}</p>`;
                     
                     
                   },

@@ -3,7 +3,6 @@ require '../functions/load.php';
 $conn = require "../functions/db.php";
 require '../header.php';
 $meet = AdminManage::getById($conn,$_GET['id']);
-// var_dump($meet->meetName);
 if(isset($_GET['id']))
 {
     

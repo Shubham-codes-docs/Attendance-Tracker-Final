@@ -6,6 +6,7 @@ class User{
   public $email;
   public  $branch;
   public  $id;
+  public $pass;
   public  $totalAtten;
 
 
@@ -110,6 +111,20 @@ public static function totalMeets($conn)
   $result = $conn->query($sql);
   $rows = $result->fetch();
   return $rows[0];
+}
+
+public function edit($conn,$id)
+{
+  $sql = "UPDATE  user SET name=:name,roll=:roll,email=:email,branch=:branch,pass=:pass WHERE id=:id";
+  $stmt=$conn->prepare($sql);
+  $stmt->bindValue(':name',$this->name,PDO::PARAM_STR);
+  $stmt->bindValue(':roll',$this->roll,PDO::PARAM_STR);
+  $stmt->bindValue(':email',$this->email,PDO::PARAM_STR);
+  $stmt->bindValue(':branch',$this->branch,PDO::PARAM_STR);
+  $stmt->bindValue(':pass',$this->pass,PDO::PARAM_STR);
+  $stmt->bindValue(':id',$id,PDO::PARAM_INT);
+  if($stmt->execute())
+  return true;
 }
 
 }

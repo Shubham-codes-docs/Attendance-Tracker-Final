@@ -1,9 +1,11 @@
 <?php require '../functions/load.php';
 $conn = require "../functions/db.php";
 require '../header.php';
+session_start();
+AdAuth::requireLogIn();
 ?>
 
-
+<a href="logout.php">Log Out</a>
     <table class="table table-striped table-hover">
         <h4 style="display: block;text-align:center;margin-top:3%;font-family: 'Lobster', cursive; ">Upcoming Meetings</h4>
 

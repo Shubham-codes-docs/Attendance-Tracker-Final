@@ -1,7 +1,4 @@
-<?php 
-session_start();
-
-session_unset();
-session_destroy();
-
-header("Location: index.php");
+<?php
+require "functions/load.php";
+Auth::logOut();
+Url::redirect('/login.php');

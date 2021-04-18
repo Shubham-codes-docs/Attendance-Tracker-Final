@@ -14,7 +14,7 @@ public static function authenticate($conn,$username,$password){
     $user=$stmt->fetch();
     $id = $user->id;
     if($user){
-        if($user->pass===$password)
+        if(password_verify($password,$user->pass))
         return $user->id;
     }
 }
@@ -27,7 +27,7 @@ public static function adminCheck($conn,$username,$password){
     $stmt->execute();
     $user=$stmt->fetch();
     if($user){
-        if($user->pass===$password)
+        if(password_verify($password,$user->pass));
         return 1;
     }
 }

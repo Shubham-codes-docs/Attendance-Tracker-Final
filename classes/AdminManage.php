@@ -71,12 +71,10 @@ public  function addInUser($conn,$id,$name,$stime,$etime)
     $sql3 = "SELECT id From user ";
     $result = $conn->query($sql3);
     $userid = $result->fetchAll();
-    // echo (json_encode($userid));
     $count = count(($userid));
     echo $count;
 for($i=0;$i<$count;$i++)
 {
-    // echo $userid[$i]["id"];
      $sql4 = "INSERT INTO usermeet(meetid,meetName,startTime,endTime,userid)VALUES(:mid,:name,:stime,:etime,:useid)";
      $stmt2=$conn->prepare($sql4);
      $stmt2->bindValue(':mid',$id,PDO::PARAM_INT);

@@ -1,59 +1,84 @@
+  <?php 
 
+require "functions/load.php";
+$conn = require "./functions/db.php";
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<style>
-body{
-margin: 10%;
-padding: 10%;
+$user = User::getById($conn,$_GET['id']);
+$errors=[];
+if(isset($_GET['id']))
+{
+  if ($user->name==='')
+  {
+  $errors[]= "Please Enter A Valid Name";
+  }
+  if($user->roll==='')
+  {
+   $errors[] = "Please Enter A Valid Roll Number";
+  }
+  if($user->email==='')
+  {
+   $errors[] = "Please Enter A Valid Email";
+  }
+  if($user->branch==='')
+  {
+   $errors[] = "Please Enter A Valid Branch";
+  }
+  if($user->password==='')
+  {
+   $errors[] = "Please Enter A Valid Password";
+  }
+  if(count($errors)===0)
+  {
+    
+
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+        
+    $user->name=$_POST['name'];
+    $user->roll=$_POST['roll'];
+    $user->email=$_POST['email'];
+    $user->branch=$_POST['branch'];
+    $user->pass=$_POST['password'];
+    if($user->edit($conn,$_GET['id']))
+    {
+      Url::redirect("/homepage.php?id=".$_GET['id']);
+}    
+else
+echo "No";
 }
-</style>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attendance Tracker</title>
-</head>
-<body>
+}
+}
 
-  
-<?php 
-include 'connect.php';
-$usermail = 'shashankkaran999@gmail.com';
-
-
-$selectquery = "SELECT * FROM registration WHERE email= '$usermail'";
-$result = mysqli_query($con,$selectquery);
-while($res = mysqli_fetch_array($result)){
-
-
-
+require 'header.php';
 ?>
+<h2>Edit Profile</h2>
+        <ul>
+        <?php foreach($errors as $error):?>
+          <li><?= $error?></li>
+          <?php endforeach;?>
+          </ul>
 
-
-<form action="editProfile.php" method="POST">
+<form  method="POST">
   <div class="form-row">
     <div class="form-group col-md-6 ">
       <label for="inputEmail4">Email</label>
-      <input name="email" type="email" class="form-control" id="inputEmail4"  value="<?php echo $usermail ?> "disabled>
+      <input  type="email" name="email" class="form-control" id="inputEmail4"  value="<?=htmlspecialchars($user->email) ?>">
     </div>
     <div class="form-group col-md-6 ">
       <label for="inputPassword4">Password</label>
-      <input name="password" type="password" class="form-control" id="inputPassword4" value="<?php echo $res['Pass'] ?>" >
+      <input name="password" type="password" class="form-control" id="inputPassword4" value="<?=htmlspecialchars($user->pass) ?>" >
     </div>
   </div>
   <div class="form-group">
     <label for="inputAddress">Name</label>
-    <input name="name" type="text" class="form-control" id="inputAddress"  value="<?php echo $res['Name'] ?>">
+    <input name="name" type="text" class="form-control" id="inputAddress"  value="<?=htmlspecialchars($user->name) ?>">
   </div>
   <div class="form-group">
     <label for="inputAddress2">Roll</label>
-    <input name="roll" type="text" class="form-control" id="inputAddress2" value="<?php echo $res['Roll'] ?>"  >
+    <input name="roll" type="text" class="form-control" id="inputAddress2" value="<?=htmlspecialchars($user->roll) ?>" >
   </div>
   <div class="form-group">
     <label for="inputAddress2">Branch</label>
-    <input name="branch" type="text" class="form-control" id="inputAddress2" value="<?php echo $res['Branch'] ?>"  >
+    <input name="branch" type="text" class="form-control" id="inputAddress2" value="<?=htmlspecialchars($user->branch) ?>"  >
   </div>
 
 
@@ -67,7 +92,7 @@ while($res = mysqli_fetch_array($result)){
 
 
   
-  <?php }  ?>
+  <?php   ?>
 
 </body>
 </html>
