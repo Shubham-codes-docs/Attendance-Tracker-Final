@@ -26,7 +26,8 @@ session_start();
 <?php foreach($errors as $error):?>
  <p><?php echo $error;?></p>
  <?php endforeach?>
-<form  method="post">
+ 
+<form  method="post"class="log-in" autocomplete="off">
 <div class="form-group">
 <label for="username">UserName</label>
 <input type="text" name="username" id="username" placeholder="Enter The Username" class="form-control">
