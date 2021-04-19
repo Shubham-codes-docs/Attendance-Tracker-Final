@@ -29,7 +29,7 @@ if(isset($_GET['id']))
   {
    $errors[] = "Please Enter A Valid Branch";
   }
-  if($user->password==='')
+  if($user->pass==='')
   {
    $errors[] = "Please Enter A Valid Password";
   }
