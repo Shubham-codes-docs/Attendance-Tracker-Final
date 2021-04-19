@@ -116,6 +116,7 @@ public static function totalMeets($conn)
 public function edit($conn,$id)
 {
   $sql = "UPDATE  user SET name=:name,roll=:roll,email=:email,branch=:branch,pass=:pass WHERE id=:id";
+  $this->pass = password_hash($this->pass,PASSWORD_DEFAULT);
   $stmt=$conn->prepare($sql);
   $stmt->bindValue(':name',$this->name,PDO::PARAM_STR);
   $stmt->bindValue(':roll',$this->roll,PDO::PARAM_STR);
