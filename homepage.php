@@ -152,11 +152,17 @@ else{
                    let p=0;
                   if ((stime<ctime)&&((res<=1800)))
                   {
-                    tel.innerHTML = `<th>${arr[i].meetid}</th>
+                    tel.innerHTML = !localStorage.marked?`<th>${arr[i].meetid}</th>
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
                     <td><button type="button" id='marker' class="btn btn-info btn-sm" onclick="mark(${arr[i].meetid})">Mark</button></td>
+                    `:
+                    `<th>${arr[i].meetid}</th>
+                    <td>${arr[i].meetName}</td>
+                    <td>${arr[i].startTime}</td>
+                    <td>${arr[i].endTime}</td>
+                    <td><button type="button" id='marker' class="btn btn-info btn-sm" disabled='true' )">Marked</button></td>
                     `;
                   }
                   p++;
@@ -192,9 +198,25 @@ else{
                   }
             })
             getTotal(id);
-            const button=document.getElementById('marker');
-            button.innerHTML = `<p>Marked</p>`;
-            button.disabled = true;
+            let time =  Date.parse(new Date());
+            let t = new Date();
+            let extime = t.setMinutes(50);
+            if(time<extime)
+            {
+              localStorage.setItem('marked',true);
+            }
+              if(localStorage.marked)
+              {
+                console.log(localStorage.marked);
+                const button=document.getElementById('marker');
+                button.innerHTML = `<p>Marked</p>`;
+                button.disabled = true;
+              }
+            
+            else{
+              localStorage.removeItem('marked');
+            }
+            
 
       }
       function getTotal(id)
@@ -222,6 +244,7 @@ else{
                   }
             })
       }
+      
     </script>
   </body>
 </html>

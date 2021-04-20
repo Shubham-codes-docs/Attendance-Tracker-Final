@@ -80,7 +80,7 @@ public static function checkTime($conn,$id)
            $endTime = strtotime($creation_time->endTime);
           $user_time = strtotime( date('h:i:s a'));
            $result=  $user_time - $endTime;
-           if($result>0 && $result<1800)
+           if($result<1800)
            {
             return true;
            }

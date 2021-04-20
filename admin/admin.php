@@ -68,7 +68,7 @@ AdAuth::requireLogIn();
                                     <td>${arr[i].startTime}</td>
                                     <td>${arr[i].endTime}</td>
                                     <td><a href=/admin/updateMeet.php?id=${arr[i].id}><button"><i class="fas fa-edit"></i></button></a></td>
-                                    <td><button onclick="delete(${arr[i].id})"><i class="fas fa-trash-alt"></i></button></td>
+                                    <td><button onclick="deleteMeet(${arr[i].id})"><i class="fas fa-trash-alt"></i></button></td>
                                     `
                                 }
                                 p++;

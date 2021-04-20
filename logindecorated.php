@@ -89,7 +89,7 @@ session_start();
       </div>
 
     </div>
-    <button type="submit" onClick="return false;">Log in</button>
+    <button type="submit" >Log in</button>
     <div id="links">
       <p id="links">New Here ? <a href="signup.php">Signup</a></p>
       <p id="links"><a href="./admin/login1.php">Admin login</a></p>
