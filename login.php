@@ -96,6 +96,14 @@ session_start();
     </div>
   </form>
 </div>
+<script>
 
+var fileref = document.createElement("link");
+fileref.rel = "stylesheet";
+fileref.type = "text/css";
+fileref.href = "./assets/css/loginstyle.css";
+document.getElementsByTagName("head")[0].appendChild(fileref)
+
+</script>
 </body>
 </html>

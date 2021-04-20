@@ -152,7 +152,7 @@ else{
                    let p=0;
                   if ((stime<ctime)&&((res<=1800)))
                   {
-                    tel.innerHTML = !localStorage.marked?`<th>${arr[i].meetid}</th>
+                    tel.innerHTML = localStorage.marked!==arr[i].meetid?`<th>${arr[i].meetid}</th>
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
@@ -203,7 +203,7 @@ else{
             let extime = t.setMinutes(50);
             if(time<extime)
             {
-              localStorage.setItem('marked',true);
+              localStorage.setItem('marked',id);
             }
               if(localStorage.marked)
               {

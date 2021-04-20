@@ -124,11 +124,11 @@
     >
       <div class="display">
         
-         <!-- <ul>
+         <ul>
         <?php foreach($errors as $error):?>
           <li><?= $error?></li>
           <?php endforeach;?>
-          </ul>  -->
+          </ul> 
         <div class="size">
           <form method="post">
           <h2 class="text-center text-primary pt-2 fs-1"><strong>Signup</strong></h2>
@@ -139,9 +139,9 @@
                 type="text"
                 placeholder="Enter Your Name"
                 name="name"
-                id="name"/>
-                 <!-- value=" <?= htmlspecialchars($user->name)?>" 
-               required/>  -->
+                id="name"
+                value=" <?= htmlspecialchars($user->name)?>" 
+               required/> 
             </div>
             <div class="mb-3">
               <label for="roll" class="form-label text-primary"
@@ -152,9 +152,9 @@
                 type="text"
                 name="roll"
                 id="roll"
-                placeholder="Enter Your Roll Number"/>
-                 <!-- value= "<?= htmlspecialchars($user->roll)?>" 
-               />  -->
+                placeholder="Enter Your Roll Number"
+                  value= "<?= htmlspecialchars($user->roll)?>" 
+               /> 
             </div>
             <div class="mb-3"><span class="mb-3-addon"><i class="fa fa-paper-plane"></i></span>
               <label for="email" class="form-label text-primary"><strong>Email</strong></label>
@@ -163,9 +163,9 @@
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Enter Your College Email"/>
-                 <!-- value=" <?= htmlspecialchars($user->email)?>" 
-               required/>  -->
+                placeholder="Enter Your College Email"
+                  value=" <?= htmlspecialchars($user->email)?>" 
+               required/> 
             </div>
             <div class="mb-3">
               <label for="branch" class="form-label text-primary"
@@ -189,9 +189,9 @@
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Enter Your Password"/>
-                 <!-- value="<?= htmlspecialchars($user->password)?>" 
-              required />  -->
+                placeholder="Enter Your Password"
+                 value="<?= htmlspecialchars($user->password)?>" 
+              required /> 
             </div>
             <div class="mb-3"><span class="mb-3-addon">
                             <i class="fa fa-lock"></i>
@@ -205,9 +205,9 @@
                 name="cpassword"
                 id="cpassword"
                 class="form-control"
-                placeholder="Confirm Password"/>
-                 <!-- value= "<?= htmlspecialchars($user->cpassword)?>" 
-              required/>  -->
+                placeholder="Confirm Password"
+                 value= "<?= htmlspecialchars($user->cpassword)?>" 
+              required/> 
             </div>
             <button class="btn btn-primary mb-3"><strong class="do">Signup</strong></button>
           </form>

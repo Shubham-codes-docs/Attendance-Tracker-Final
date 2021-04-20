@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/loginstyle.css" />
+    
     <script src="https://kit.fontawesome.com/8367094e74.js" crossorigin="anonymous"></script>
     <title>Homepage</title>
   </head>
