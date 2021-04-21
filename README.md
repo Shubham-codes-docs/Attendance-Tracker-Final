@@ -1,19 +1,6 @@
-# Attendance tracker website
-
+# Attendance tracker website 
 version: 1.0.0
 
-###User email : user@gmail.com
-###Password : 123
+This website can be used as an attendence tool for your meetings. The admin of the webiste can create/edit/delete meetings as and when required. The attendees of the meeting have to create an account and then they can login to the website and mark their attendance. The attendance data gets stored in a database and the can be viewed on the user's as well as admin's homepage.
 
-
-###Admin email : admin@gmail.com
-###Password : 123
-
-
-### 1. All files with letter 'a' before their name are files for admin's login / homepage / logout.
-### 2. 'test_db.sql' is database code for admin's database.
-### 3. 'signup.sql' is database code for user's database.
-### 4. 'login.php' is database validation file for a login session.
-### 5. 'index.php' is frontend data input code for a login session.
-### 6. 'db_conn.php' deals with admin's database connection. 
-### 7. 'connect_signup.php' deals with user's database conection.
+# One can view this website by git pulling this repository to their PCs and then run the login.php file.
