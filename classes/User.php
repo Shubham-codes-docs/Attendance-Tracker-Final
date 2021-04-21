@@ -8,6 +8,7 @@ class User{
   public  $id;
   public $pass;
   public  $totalAtten;
+  public $errors;
 
 
 public static function fetchAtten()

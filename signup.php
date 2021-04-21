@@ -77,18 +77,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST")
   </div>
 
         
-         <ul>
+       
+          <form method="post" action="" class="log-in" autocomplete="off">
+          <h4><span>Attendence Tracker</span></h4>
+          <p>Welcome! <br><br>Create an account to mark your attendence</p>
+          <p>
+          <ul>
         <?php foreach ($errors as $error): ?>
           <li><?=$error
 ?></li>
           <?php
 endforeach; ?>
           </ul> 
-       
-          <form method="post" action="" class="log-in" autocomplete="off">
-          <h4><span>Attendence Tracker</span></h4>
-          <p>Welcome! <br><br>Create an account to mark your attendence</p>
-          <p>
           <p>
             <div class="floating-label"><span class="mb-3-addon"><i class="fa fa-user"></i></span>
               <label for="name">Name</label>

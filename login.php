@@ -12,6 +12,7 @@ session_start();
     {
         Auth::logIn();
         $_SESSION['userid']=$id;
+        $_SESSION['password']=$_POST['password'];
         Url::redirect("/homepage.php?id=".$id);
     }
     else
@@ -37,17 +38,17 @@ session_start();
     </svg>
   </div>
 
-  <?php foreach ($errors as $error) : ?>
-    <p><?php echo $error; ?></p>
-  <?php endforeach ?>
 
   <form method="post" action="" class="log-in" autocomplete="off">
     <h4><span>Attendence Tracker</span></h4>
     <p>Welcome back! <br><br>Log in to your account to mark your attendence</p>
     <p>
+    <?php foreach ($errors as $error) : ?>
+    <p><?php echo $error; ?></p>
+  <?php endforeach ?>
     <p>
     <div class="floating-label">
-      <input placeholder="Email" type="text" name="username" id="username" autocomplete="off">
+      <input placeholder="Email" type="email" name="username" id="username" autocomplete="off">
       <label for="username">Email:</label>
       <div class="icon">
 

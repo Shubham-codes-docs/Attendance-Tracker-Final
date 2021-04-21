@@ -12,8 +12,8 @@ public static function authenticate($conn,$username,$password){
     $stmt->setFetchMode(PDO::FETCH_CLASS,"CheckUser");
     $stmt->execute();
     $user=$stmt->fetch();
-    $id = $user->id;
     if($user){
+        $id = $user->id;
         if(password_verify($password,$user->pass))
         return $user->id;
     }

@@ -19,42 +19,64 @@ else{
 
 
 <?php require "header.php";?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Attendance Tracker</a>
-        <a class='nav nav-element'  href="editprofile.php?id=<?= $_GET['id']?>">Edit</a>
-        <a href="logout.php">Log Out</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <a class="navbar-brand" href="javascript:void(0)">Attendance Tracker</a>
+        <!-- <a class="nav nav-element" href="editprofile.php?id=<?= $_GET['id']?>" style="color:#fff;">Edit</a>
+        <a href="logout.php" style="color:#fff;">Log Out</a> -->
+              <div class="dropstart mr-4">
+              <button type="button" class="btn btn-danger dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                <li><a class="dropdown-item" href="editprofile.php?id=<?= $_GET['id']?>">Edit</a></li>
+                <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+                <!-- <li><a class="dropdown-item" href="javascript:void(0)">Queries</a></li> -->
+              </ul>
+        </div>
       </div>
     </nav>
-    <div class="container mt-5">
-      <section class="display txt">
-        <div>
-          <h3>Name</h3>
-          <p id='name'><?=$user->name?></p>
-        </div>
-        <div>
-          <h3>Roll No.</h3>
-          <p id='roll'><?=$user->roll?></p>
-        </div>
-        <div>
-          <h3>Branch</h3>
-          <p id='branch'><?=$user->branch?></p>
-        </div>
-        <div>
-          <h3>Attendance</h3>
-         <p> <p  style = "display:inline"id='attendance'><?=$user->totalAtten ?></p>/<?=$totalmeets?></p>
-        </div>
+    
+  <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+     <div class="row pl-3 pr-3" style="width:100%;">
+      <div class="card border-primary mb-3 mt-4" style="margin-left:14%; max-width: 15rem; border-color:#e9e9e9!important;-webkit-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);">
+          <div class="card-header" style="font-weight:500;">Name <span class= "ml-24"><i class="fas fa-user-alt"></i></span></div>
+            <div class="card-body" style="font-size: 25px;font-weight: 300;">
+              <p class="card-text" id='name'><?=$user->name?></p>
+            </div>
+          </div>
+
+        <div class="card border-primary ml-4 mb-3 mt-4" style="max-width: 15rem; border-color:#e9e9e9!important;-webkit-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);">
+          <div class="card-header" style="font-weight:500;">Roll <span class= "ml-24"> <i class="far fa-id-card fa-3"></span></i></div>
+            <div class="card-body" style="font-size: 25px;font-weight: 300;">
+              <p class="card-text" id='roll'><?=$user->roll?></p>
+            </div>
+          </div>
+
+        <div class="card border-primary ml-4 mb-3 mt-4" style="max-width: 15rem; border-color:#e9e9e9!important;-webkit-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);">
+          <div class="card-header" style="font-weight:500;">Branch <span class= "ml-24">  <i class="fas fa-book-reader"></i></span></div>
+            <div class="card-body" style="font-size: 25px;font-weight: 300;">
+              <p class="card-text" id='branch'><?=$user->branch?></p>
+            </div>
+          </div>
+
+        <div class="card border-primary ml-4 mb-3 mt-4" style="max-width: 15rem; border-color:#e9e9e9!important;-webkit-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);
+box-shadow: 2px 4px 24px -4px rgba(0,0,0,0.75);">
+          <div class="card-header" style="font-weight:500;">Attendance<span class= "ml-20"><i class="fas fa-pen-fancy"></i></span></div>
+            <div class="card-body" style="font-size: 25px;
+    font-weight: 300;">
+              <p class="card-text" id='attendance'><?=$user->totalAtten ?> / <?=$totalmeets?></p>
+            </div>
+          </div>
+     </div>
+
       <nav style="width:100%;">
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#previous" type="button" role="tab"
@@ -70,7 +92,6 @@ else{
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">#</th>
                 <th scope="col">Meeting Name</th>
                 <th scope="col">Start Time</th>
                 <th scope="col">End Time</th>
@@ -115,16 +136,16 @@ else{
                    let p=0;
                   if(res>1800)
                   {
-                    tel.innerHTML = arr[i].attend==='0'? `<th>${arr[i].meetid}</th>
+                    tel.innerHTML = arr[i].attend==='0'? `
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
                     <td><p>Absent</p></td>
-                    `:arr[i].attend==='1'?`<th>${arr[i].meetid}</th>
+                    `:arr[i].attend==='1'?`
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
-                    <td><p>Present</p></td>`:`<th>${arr[i].meetid}</th>
+                    <td><p>Present</p></td>`:`
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
@@ -138,7 +159,7 @@ else{
                    let p=0;
                   if(stime>ctime)
                   {
-                    tel.innerHTML = `<th>${arr[i].meetid}</th>
+                    tel.innerHTML = `
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
@@ -152,13 +173,13 @@ else{
                    let p=0;
                   if ((stime<ctime)&&((res<=1800)))
                   {
-                    tel.innerHTML = localStorage.marked!==arr[i].meetid?`<th>${arr[i].meetid}</th>
+                    tel.innerHTML = localStorage.marked!==arr[i].meetid?`
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
                     <td><button type="button" id='marker' class="btn btn-info btn-sm" onclick="mark(${arr[i].meetid})">Mark</button></td>
                     `:
-                    `<th>${arr[i].meetid}</th>
+                    `
                     <td>${arr[i].meetName}</td>
                     <td>${arr[i].startTime}</td>
                     <td>${arr[i].endTime}</td>
@@ -175,7 +196,7 @@ else{
                 console.log("error");
               }
         })
-  };
+  }
     function mark(id)
       {
           $.ajax({
@@ -244,7 +265,9 @@ else{
                   }
             })
       }
-      
+      window.onload= function(){
+        abc('p');
+      }
     </script>
   </body>
 </html>

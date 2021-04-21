@@ -4,18 +4,27 @@ require '../header.php';
 session_start();
 AdAuth::requireLogIn();
 ?>
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="javascript:void(0)">ADMIN Panel</a>
+              <div class="dropstart mr-4">
+              <button type="button" class="btn btn-danger dropdown-toggle" id="dropdownMenuOffset" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                <!-- <li><a class="dropdown-item" href="editprofile.php?id=<?= $_GET['id']?>">Edit</a></li> -->
+                <li><a class="dropdown-item" href="logout.php">Log out</a></li>
+              </ul>
+        </div>
+      </div>
+    </nav>
 
-<a href="logout.php">Log Out</a>
-    <table class="table table-striped table-hover">
-        <h4 style="display: block;text-align:center;margin-top:3%;font-family: 'Lobster', cursive; ">Upcoming Meetings</h4>
-
+    <table class="table table-striped table-hover mt-3">
+        <p class="mt-3" style="display: block;text-align:center;font-size:25px;font-weight:400;">Manage Meetings</p>
         <div style="display: flex; justify-content:center;margin-left:10%;margin-right:10%;margin-top:2% " class="btn-group" role="group" aria-label="Basic example">
-
-
              <button type="button" class="btn btn-secondary" onclick = "meet('p')"  >Previous Meetings</button></a>
              <button type="button" class="btn btn-primary" onclick = "meet('u')" >Upcoming Meetings</button></a>
-            
-            <a href="addmeet.php"><button type="button" class="btn btn-danger">
+             <a href="addmeet.php"><button type="button" class="btn btn-danger">
                     + New Meeting
                 </button>
                 </a>
@@ -63,7 +72,7 @@ AdAuth::requireLogIn();
                                 let p=0;
                                 if(etime<ctime)
                                 {
-                                    tel.innerHTML = `<th>${arr[i].id}</th>
+                                    tel.innerHTML = `
                                     <td>${arr[i].meetName}</td>
                                     <td>${arr[i].startTime}</td>
                                     <td>${arr[i].endTime}</td>
@@ -79,7 +88,7 @@ AdAuth::requireLogIn();
                             let p=0;
                             if((stime>ctime)||(ctime<etime))
                             {
-                                tel.innerHTML = `<th>${arr[i]. id}</th>
+                                tel.innerHTML = `
                                 <td>${arr[i].meetName}</td>
                                 <td>${arr[i].startTime}</td>
                                 <td>${arr[i].endTime}</td>
